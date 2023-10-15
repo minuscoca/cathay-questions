@@ -21,10 +21,10 @@ div {
 }
 ```
 
-則 box-sizing 預設為 content-box 的情況下，若要得到 `<div>` box model 的寬度就需要將以上四個部位都列入計算。
+則預設 `box-sizing: content-box;` 的情況下，若要得到 `<div>` box model 的寬度就需要將以上四個部位都列入計算。
 
-`100px = 60px(width) + 8px(padding-left) + 8px(padding-right) + 2px(border-left-width) + 2px(border-right-width) + 10px(margin-left) + 10px(margin-right)`
+**100px = 60px(width) + 8px(padding-left) + 8px(padding-right) + 2px(border-left-width) + 2px(border-right-width) + 10px(margin-left) + 10px(margin-right)**
 
-但是一般會將 box-sizing 設為 border-box，如此可以直接設定 width height 至包含 Border 區塊以內，可以省去很多計算更方便排版。
+但是一般會將 box-sizing 設為 `box-sizing: border-box;`，如此可以直接設定 width height 至包含 Border 區塊以內，可以省去很多計算更方便排版。
 
-`80px = 60px(width) + 10px(margin-left) + 10px(margin-right)`
+**80px = 60px(width) + 10px(margin-left) + 10px(margin-right)**

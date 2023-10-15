@@ -6,7 +6,7 @@ Interface 是用來定義 object 的型別，例如有個 user object 需要定�
 
 ```typescript
 const user: User = {
-  name: 'John',
+  name: "John",
   age: 18,
 };
 
@@ -30,7 +30,7 @@ interface User {
   postIds: string[];
 }
 
-interface UserWithoutPostIds extends Omit<User, 'postIds'> {}
+interface UserWithoutPostIds extends Omit<User, "postIds"> {}
 ```
 
 ```typescript
@@ -41,16 +41,16 @@ type User = {
   postIds: string[];
 };
 
-type UserWithoutPostIds = Omit<User, 'postIds'>;
+type UserWithoutPostIds = Omit<User, "postIds">;
 ```
 
 4. 如果要從已經定義的 object 中得到型別定義時，用 interface 需要自己寫定義，而用 type 可以用 typeof 直接得到定義，因此使用 type 可以避免重複。
 
 ```typescript
 const data = [
-  { name: 'Aareal Bank', location: { city: 'Wiesbaden', country: 'Germany' } },
-  { name: 'ABN AMRO', location: { city: 'Amsterdam', country: 'Netherlands' } },
-  { name: 'AB Bank', location: { city: 'Dhaka', country: 'UBangladesh' } },
+  { name: "Aareal Bank", location: { city: "Wiesbaden", country: "Germany" } },
+  { name: "ABN AMRO", location: { city: "Amsterdam", country: "Netherlands" } },
+  { name: "AB Bank", location: { city: "Dhaka", country: "UBangladesh" } },
 ] as const;
 
 type Banks = typeof data;
@@ -72,11 +72,11 @@ export type User = {
 };
 
 enum Profession {
-  STUDENT = 'student',
-  FREELANCER = 'freelancer',
-  PRODUCT_OWNER = 'productOwner',
-  ENGINEER = 'engineer',
-  SYSTEM_ANALYTICS = 'systemAnalytics',
+  STUDENT = "student",
+  FREELANCER = "freelancer",
+  PRODUCT_OWNER = "productOwner",
+  ENGINEER = "engineer",
+  SYSTEM_ANALYTICS = "systemAnalytics",
 }
 
 function getUsersByProfession(users: User[], profession: Profession) {
@@ -90,14 +90,45 @@ const students = getUsersByProfession([], Profession.STUDENT);
 
 ```typescript
 const Profession = {
-  STUDENT: 'student',
-  FREELANCER: 'freelancer',
-  PRODUCT_OWNER: 'productOwner',
-  ENGINEER: 'engineer',
-  SYSTEM_ANALYTICS: 'systemAnalytics',
+  STUDENT: "student",
+  FREELANCER: "freelancer",
+  PRODUCT_OWNER: "productOwner",
+  ENGINEER: "engineer",
+  SYSTEM_ANALYTICS: "systemAnalytics",
 } as const;
 
 type ValuesOf<T> = T[keyof T];
 type Profession = ValuesOf<typeof Profession>;
-const students = getUsersByProfession([], 'student');
+const students = getUsersByProfession([], "student");
+```
+
+而且當 enum 為數字時（預設就是數字）不好做 loop，用 object 就不會有問題。
+
+```typescript
+enum Profession {
+  STUDENT,
+  FREELANCER,
+  PRODUCT_OWNER,
+  ENGINEER,
+  SYSTEM_ANALYTICS,
+}
+
+for (const [index, value] of Object.entries(Profession)) {
+  console.log({ index, value });
+}
+```
+
+log 的結果會是：
+
+```typescript
+{ index: '0', value: 'STUDENT' }
+{ index: '1', value: 'FREELANCER' }
+{ index: '2', value: 'PRODUCT_OWNER' }
+{ index: '3', value: 'ENGINEER' }
+{ index: '4', value: 'SYSTEM_ANALYTICS' }
+{ index: 'STUDENT', value: 0 }
+{ index: 'FREELANCER', value: 1 }
+{ index: 'PRODUCT_OWNER', value: 2 }
+{ index: 'ENGINEER', value: 3 }
+{ index: 'SYSTEM_ANALYTICS', value: 4 }
 ```

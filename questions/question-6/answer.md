@@ -8,7 +8,7 @@
 
 CSS 的精度順序
 
-- (1,0,0,0,0) `!important`
+- **!important** (1,0,0,0,0)
 
 ```css
 .tag {
@@ -16,13 +16,13 @@ CSS 的精度順序
 }
 ```
 
-- (1,0,0,0) `inline style`
+- **Inline Style** (1,0,0,0)
 
 ```html
 <span style="padding: 1rem;" />
 ```
 
-- (0,1,0,0) `id selector`
+- **Id Selector** (0,1,0,0)
 
 ```css
 #tag {
@@ -30,7 +30,7 @@ CSS 的精度順序
 }
 ```
 
-- (0,0,1,0) `class selector`
+- **Class Selector** (0,0,1,0)
 
 ```css
 .tag {
@@ -38,7 +38,7 @@ CSS 的精度順序
 }
 ```
 
-- (0,0,0,1) `element selector`
+- **Element Selector** (0,0,0,1)
 
 ```css
 span {
@@ -46,7 +46,7 @@ span {
 }
 ```
 
-- (0,0,0,0) `* selector`
+- **Wildcard Selector** (0,0,0,0)
 
 ```css
 * {
@@ -70,9 +70,9 @@ span {
 }
 ```
 
-因為 #tag 為 id selecor、 .tag 為 class selector，
-`若有重複的 css property，在精度不同時，精度高的 #tag 會取代精度低的 .tag`，
-合併的結果為 background: pink;
+因為 `#tag` 為 id selecor、 `.tag` 為 class selector，
+**若有重複的 css property，在精度不同時，精度高的 `#tag` 會取代精度低的 `.tag`**，
+合併的結果為 `background: pink;`
 
 ## 若有重複的 css property，在精度相同時，後定義的會取代先定義的
 
@@ -93,9 +93,9 @@ span {
 }
 ```
 
-因為 .container-sm 和 .container-lg 精度同為 class selector，
-`若有重複的 css property，在精度相同時，後定義的 .container-lg 會取代先定義的 .container-sm`，
-合併的結果為 background: cyan; width: 200px; height: 200px;
+因為 `.container-sm` 和 `.container-lg` 精度同為 class selector，
+**若有重複的 css property，在精度相同時，後定義的 `.container-lg` 會取代先定義的 `.container-sm`**，
+合併的結果為 `background: cyan; width: 200px; height: 200px;`
 
 ## 結合不同的 selector 可以有更高的精度
 
@@ -113,6 +113,6 @@ span.tag {
 }
 ```
 
-因為 span.tag (0,0,1,1) 的精度比 .tag (0,0,1,0) 更高，
-`若有重複的 css property，在精度不同時，精度高的 span.tag 會取代精度低的 .tag`，
-合併的結果為 background: pink;
+因為 `span.tag` (0,0,1,1) 的精度比 `.tag` (0,0,1,0) 更高，
+**若有重複的 css property，在精度不同時，精度高的 `span.tag` 會取代精度低的 `.tag`**，
+合併的結果為 `background: pink;`

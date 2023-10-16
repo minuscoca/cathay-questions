@@ -4,7 +4,7 @@
 
 Open answer.ts or answer.md under each question folder.
 
-### TO run the development server:
+### To run the development server:
 
 ```bash
 npm run dev

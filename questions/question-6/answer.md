@@ -116,3 +116,7 @@ span.tag {
 因為 `span.tag` (0,0,1,1) 的精度比 `.tag` (0,0,1,0) 更高，
 **若有重複的 css property，在精度不同時，精度高的 `span.tag` 會取代精度低的 `.tag`**，
 合併的結果為 `background: pink;`
+
+## 使用的原則
+
+盡量全部使用 class selector，如果有必要提高精度再用 #id selector 或結合 element selector。盡量不要使用 element selector，絕對避免使用 !important。

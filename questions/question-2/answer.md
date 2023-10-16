@@ -4,7 +4,7 @@
 
 為什麼不生效：
 
-`.container .shop-list li.item` 的精度 (0,0,1,1) 比 `.container .shop-list .item` 的精度 (0,0,1,0) 更高，
+`.container .shop-list li.item` 的精度 (0,0,3,1) 比 `.container .shop-list .item` 的精度 (0,0,3,0) 更高，
 因為除了相同層級的 class selector 還多了 element selector，
 所以相同的 css property (color) 精度低的會被精度高的取代，
 最後的結果為 `color: green;`

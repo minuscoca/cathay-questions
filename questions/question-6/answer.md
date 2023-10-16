@@ -119,4 +119,4 @@ span.tag {
 
 ## 使用的原則
 
-盡量全部使用 class selector，如果有必要提高精度再用 #id selector 或結合 element selector。盡量不要使用 element selector，絕對避免使用 !important。
+盡量全部使用 class selector，如果有必要提高精度再用 #id selector 或結合 element selector。如果需要最高的精度再使用 inline style。盡量不要使用 element selector，絕對避免使用 !important。
